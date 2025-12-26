@@ -13,6 +13,22 @@
     <!-- Import Vue 3 from CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
+    <script>
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+                // Reactive state with Composition API
+                const message = ref('Hello, EDTeam students from VUE 3')
+                
+                // Return variable that we will use in the template above
+                return { message }
+            }
+
+        }).mount('#app');
+
+    </script>    
+
 
 
 </body>
