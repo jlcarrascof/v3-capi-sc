@@ -17,16 +17,18 @@
         <br>
         <h1 v-if="lantern">Turn On</h1>
         <h1 v-else>Turn Off</h1>
-        <button @click="turnOnOff">Turn On/Turn Off</button>
+        <button @click="turnOnOff">Turn On/Turn Off and Show Name</button>
         <br>
         <h2 v-show="showName">My name is Josh</h2>
+        <br>
+        <h2>{{ isLanternOn }}</h2>
     </div>
     
     <!-- Import Vue 3 from CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <script>
-        const { createApp, ref } = Vue
+        const { createApp, ref, computed } = Vue
 
         createApp({
             setup() {
@@ -46,9 +48,19 @@
                     messages.value.push(message)
                 }
 
+                const changeShowStatus = () => {
+                    showName.value = !showName.value
+                }
+
                 const turnOnOff = () => {
                     lantern.value = !lantern.value
+                    changeShowStatus()
                 }
+
+                // Computed en Composition API
+                const isLanternOn = computed(() => {
+                    return lantern.value ? 'The lantern is on' : 'The lantern is off'
+                })
 
                 // Return variables that we will use in the template above
                 return { messages, addNewMessage, mainClass, lantern, showName, turnOnOff }
