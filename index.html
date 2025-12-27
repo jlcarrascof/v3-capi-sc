@@ -8,7 +8,7 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="(message, index) in messages" :key="index">
+            <li v-for="(message, index) in messages" :class="mainClass" :key="index">
                 {{ index }} - {{ message }}
             </li>
         </ul>
@@ -36,8 +36,10 @@
                         messages.value.push(message)
                 }
 
+                const mainClass = ref('container')
+
                 // Return variables that we will use in the template above
-                return { messages, addNewMessage }
+                return { messages, addNewMessage, mainClass }
             }
 
         }).mount('#app');
