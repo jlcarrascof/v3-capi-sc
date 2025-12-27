@@ -28,7 +28,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <script>
-        const { createApp, ref, computed } = Vue
+        const { createApp, ref, computed, watch } = Vue
 
         createApp({
             setup() {
@@ -64,8 +64,8 @@
 
                 // Watcher with Composition API
                 watch(lantern, (value, oldValue) => {
-                console.log({ value, oldValue })
-                console.log(`The lantern was in ${oldValue} and now is ${value}`)
+                    console.log({ value, oldValue })
+                    console.log(`The lantern was in ${oldValue} and now is ${value}`)
                 })
 
                 // Return variables that we will use in the template above
