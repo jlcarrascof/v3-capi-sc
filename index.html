@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 with Composition API</title>
+    <style>
+        .active {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul v-for="(message, index) in messages" :class="mainClass" :key="index">
+            <li>
+                {{ index }} - {{ message }}
+            </li>
+        </ul>
+        <button @click="addNewMessage">Add Message</button>
+        <br>
+        <br>
+        <h1 v-if="lantern">Turn On</h1>
+        <h1 v-else>Turn Off</h1>
+        <button @click="turnOnOff">Turn On/Turn Off and Show Name</button>
+        <br>
+        <h2 
+            :class="{ active: showName }" 
+            :style="{ backgroundColor: showName ? 'yellow' : 'blue' }">
+                My name is Josh
+        </h2>
+        <br>
+        <h2>{{ isLanternOn }}</h2>
+    </div>
+    
+    <!-- Import Vue 3 from CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp, ref, computed, watch } = Vue
+
+        createApp({
+            setup() {
+                // Reactive state                
+                const messages = ref([
+                    'I went to go for a walk',
+                    'Ill go to the movie theater',
+                    'Study Vue at EDTeam',
+                ])
+
+                const mainClass = ref('container')
+                const lantern = ref(false)
+                const showName = ref(false)
+
+                const addNewMessage = () => {
+                    const message = 'Ride bicycle'
+                    messages.value.push(message)
+                }
+
+                const changeShowStatus = () => {
+                    showName.value = !showName.value
+                }
+
+                const turnOnOff = () => {
+                    lantern.value = !lantern.value
+                    changeShowStatus()
+                }
+
+                // Computed en Composition API
+                const isLanternOn = computed(() => {
+                    return lantern.value && showName.value ? 'The lantern is on' : 'The lantern is off'
+                })
+
+                // Watcher with Composition API
+                watch(lantern, (value, oldValue) => {
+                    console.log({ value, oldValue })
+                    console.log(`The lantern was in ${oldValue} and now is ${value}`)
+                })
+
+                // Return variables that we will use in the template above
+                return { messages, mainClass, lantern, showName, addNewMessage, turnOnOff, isLanternOn }
+            }
+        }).mount('#app');
+
+    </script>    
+
+</body>
+</html>
