@@ -59,7 +59,13 @@
 
                 // Computed en Composition API
                 const isLanternOn = computed(() => {
-                    return lantern.value ? 'The lantern is on' : 'The lantern is off'
+                    return lantern.value && showName.value ? 'The lantern is on' : 'The lantern is off'
+                })
+
+                // Watcher with Composition API
+                watch(lantern, (value, oldValue) => {
+                console.log({ value, oldValue })
+                console.log(`The lantern was in ${oldValue} and now is ${value}`)
                 })
 
                 // Return variables that we will use in the template above
