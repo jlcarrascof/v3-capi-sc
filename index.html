@@ -37,16 +37,21 @@
                     'Study Vue at EDTeam',
                 ])
 
-                // Function to add a new message
+                const mainClass = ref('container')
+                const lantern = ref(false)
+                const showName = ref(false)
+
                 const addNewMessage = () => {
                     const message = 'Ride bicycle'
-                        messages.value.push(message)
+                    messages.value.push(message)
                 }
 
-                const mainClass = ref('container')
+                const turnOnOff = () => {
+                    lantern.value = !lantern.value
+                }
 
                 // Return variables that we will use in the template above
-                return { messages, addNewMessage, mainClass }
+                return { messages, addNewMessage, mainClass, lantern, showName, turnOnOff }
             }
 
         }).mount('#app');
