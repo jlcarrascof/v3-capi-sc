@@ -1,5 +1,16 @@
 <script lang="ts" setup>
+    import { ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
 
+    // Reactive State
+    const message = ref<string>('Hello');
+
+    // Refs
+    const mainElement = ref<HTMLElement | null>(null);
+
+    // Methods 
+    const changeMessage = () => {
+        message.value = 'Hello changed!'
+    }
 </script>
 
 <template>
