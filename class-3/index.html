@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class 3 - Vue 3</title>
+</head>
+<body>
+  <div id="app">
+    <first-component></first-component>
+    <second-component></second-component>
+  </div>
+
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp } = Vue
+
+    // Creating the root app
+    const app = createApp({})
+
+    // Components global register
+    app.component('first-component', {
+      template: `<h1>Hello, EDTeam</h1>`
+    })
+
+    app.component('second-component', {
+      template: `<first-component></first-component>`
+    })
+
+    // Here we mount our app
+    app.mount('#app')
+  </script>
+</body>
+</html>
