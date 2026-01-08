@@ -11,6 +11,18 @@
     const changeMessage = () => {
         message.value = 'Hello changed!'
     }
+
+    // Destroy() Vue 2 ... simulation
+    const destroyComponent = () => {
+        console.log('Simulating component destruction: in Vue 3 this is handled with v-if in the parent component.');
+    }
+
+    // Life Cycle
+    // created/beforeCreate → logic goes directly in setup()
+    console.log("I'm in setup() (equiv. created)")
+    console.log(message.value)
+
+
 </script>
 
 <template>
