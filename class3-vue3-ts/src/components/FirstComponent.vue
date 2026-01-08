@@ -37,8 +37,20 @@
         console.log(mainElement.value)
     })
 
+    onUpdated(() => {
+        console.log("I'm in onUpdated() ....")
+        console.log(mainElement.value)
+    })
 
+    onBeforeUnmount(() => {
+        console.log("I'm in onBeforeUnmount() ....")
+        console.log(message.value)
+    })
 
+    onUnmounted(() => {
+        console.log("I'm in onUnmounted() ....")
+        console.log(message.value)
+    })
 </script>
 
 <template>
