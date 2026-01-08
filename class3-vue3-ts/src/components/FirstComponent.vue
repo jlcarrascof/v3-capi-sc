@@ -22,6 +22,22 @@
     console.log("I'm in setup() (equiv. created)")
     console.log(message.value)
 
+    onBeforeMount(() => {
+        console.log("I'm in onBeforeMount() ....")
+        console.log(mainElement.value)
+    })
+
+    onMounted(() => {
+        console.log("I'm in onMounted() ....")
+        console.log(mainElement.value)
+    })
+
+    onBeforeUpdate(() => {
+        console.log("I'm in onBeforeUpdate() ....")
+        console.log(mainElement.value)
+    })
+
+
 
 </script>
 
