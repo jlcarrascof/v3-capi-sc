@@ -54,7 +54,10 @@
 </script>
 
 <template>
-    <h1>First Component</h1>
+    <h1 ref="mainElement">{{ message }}</h1>
+    <button @click="changeMessage">Change Message</button>
+    <!-- In Vue 3, $destroy() doesn't exist; component destruction is handled with v-if in the parent component. -->
+    <button @click="destroyComponent">Destroy Component</button>
 </template>
 
 <style scoped>
